@@ -1,5 +1,5 @@
 
-GET https://api.nasa.gov/planetary/apod?api_key=ADlFh5gshP0g99arMpM00c9au7WlDR9AukBZgXQh
+GET https://api.nasa.gov/planetary/apod?api_key=
 
 ###
 GET http://localhost:3000/api/

@@ -17,10 +17,11 @@ export default function Learnmore() {
 
             <p className="w-2/4 m-auto text-lg">
                 This is a personal project focused on recreating or
-                solving ideas related to NASA's Astronomy Picture of 
+                solving ideas related to NASA&apos;s Astronomy Picture of 
                 the Day in space. I want to clarify that there is no
                 plagiarism involved in this project. All credits
-                for the original content go to NASA.
+                for the original idea of APOD go to NASA. Except the overall 
+                design.
 
                 This project is inspired by the incredible work done
                 by NASA in exploring and sharing the wonders of space
