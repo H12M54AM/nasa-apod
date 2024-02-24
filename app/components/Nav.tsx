@@ -6,47 +6,24 @@ import Link from "next/link"
 export default function Nav() {
     return (
         <>
-            {/* <header>
-                <div className="p-8 flex h-16 justify-between text-white">
-                    <div className="flex relative">
-                        <Image
-                            src={nasa_logo}
-                            height={50}
-                            width={50}
-                            alt="Nasa Logo"
-                            className="relative"
-                        />
-                        <h3>Astronomy Picture of the Day</h3>
-                    </div>
-                    <div className="flex flex-row">
-                        <div className="no-underline text-white text-xl relative">
-                            <ul><li><a href="#">Home</a></li></ul>
-                            <ul><li><a href="#latest__news">News</a></li></ul>
-                        </div>
-                    </div>
-                </div>
-            </header> */}
-
-            <div className="navbar text-white w-5/6 m-auto">
+            <div className="navbar text-white w-5/6 m-auto flex justify-between ">
                 <div className="navbar-start">
-                    <div className="flex relative">
+                    <div className="flex items-center">
                         <Image
                             src={nasa_logo}
-                            height={50}
-                            width={50}
+                            height={80}
+                            width={80}
                             alt="Nasa Logo"
                             className="relative"
                         />
-                        <h1>Astronomy Picture of the Day</h1>
-                    </div>
-                    <div className="">
 
-                        <Link href={"/about"} >About</Link>
+                        <Link className="text-red-500 font-semibold" href={"/"}>Astronomy Picture of the Day</Link>
                     </div>
                 </div>
-
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
+                <div className="navbar-end  ">
+                    <Link className="mx-5 ease-in-out duration-150 btn hover:btn-primary" href={"/about"} >About</Link>
+                    <Link className="mx-5 ease-in-out duration-150 btn hover:btn-primary" href={"/disclaimer"} >Disclaimer!</Link>
+                    {/* <a className="btn">Button</a> */}
                 </div>
             </div>
         </>
