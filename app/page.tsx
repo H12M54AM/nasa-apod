@@ -2,7 +2,10 @@ import Heart from '@/public/heart-48.png'
 import Image from 'next/image'
 
 export default async function Home() {
-  const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=' + process.env.API_KEY);
+  const response = await fetch(
+    `https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}`,
+    { headers: { accept: 'application/json' } }
+  );
   const data = await response.json()
 
   return (
@@ -25,6 +28,9 @@ export default async function Home() {
               <h2 className="text-2xl text-white card-title text-left">
                 {data.title}
               </h2>
+              <h3 className='font-thin italic'>
+                {data.copyright}
+              </h3>
               {/* <img src={Heart} alt="heart" className='relative ml-4' /> */}
               <div className='flex flex-col'>
                 {/* Content excludng the Title */}
