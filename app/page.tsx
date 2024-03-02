@@ -1,4 +1,15 @@
+import { Metadata } from 'next';
 import Image from 'next/image'
+
+export const metadata: Metadata = {
+  title: 'APOD Redesign - Home',
+  description: 'Explore the wonders of the universe with our space-themed website powered by NASA\'s Astronomy Picture of the Day API. Immerse yourself in captivating daily images and expand your cosmic knowledge. Enhance your frontend development skills while enjoying the beauty of space.',
+  keywords: 'Space exploration, NASA APOD API, cosmic imagery, frontend development, universe wonders',
+  openGraph: {
+    type: "website",
+    url: "https://apod.edwardcreates.ca/"
+  }
+}
 
 type APOD = {
   id: number,
