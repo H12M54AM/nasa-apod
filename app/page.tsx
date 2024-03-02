@@ -31,8 +31,6 @@ async function getData() {
   });
   // Forces json into types
   const data:APOD = await res.json()
-
-  console.log(data)
   return data
 }
 /**
