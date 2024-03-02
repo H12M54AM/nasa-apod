@@ -1,9 +1,15 @@
-import Heart from '@/public/heart-48.png'
+import { Metadata } from 'next';
 import Image from 'next/image'
-/**
- * 
- * @returns The main page fo picture, body and styling
- */
+
+export const metadata: Metadata = {
+  title: 'APOD Redesign - Home',
+  description: 'Explore the wonders of the universe with our space-themed website powered by NASA\'s Astronomy Picture of the Day API. Immerse yourself in captivating daily images and expand your cosmic knowledge. Enhance your frontend development skills while enjoying the beauty of space.',
+  keywords: 'Space exploration, NASA APOD API, cosmic imagery, frontend development, universe wonders',
+  openGraph: {
+    type: "website",
+    url: "https://apod.edwardcreates.ca/"
+  }
+}
 
 type APOD = {
   id: number,
@@ -15,13 +21,25 @@ type APOD = {
   explanation: string,
   copyright: string
 }
+/**
+ * 
+ * @returns NASA api data
+ */
+async function getData() {
+  let res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}`, {
+    method: "GET"
+  });
+  // Forces json into types
+  const data:APOD = await res.json()
+  return data
+}
+/**
+ * 
+ * @returns The main page fo picture, body and styling
+ */
 export default async function Home() {
-  const response = await fetch(
-    `https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}`,
-    { headers: { accept: 'application/json' } }
-  );
-  const data:APOD = await response.json()
-
+  // Contatins all of the Nasa API data
+  const data:APOD = await getData()
   return (
     <main className="">
       <section className=' w-4/5 m-auto mt-10 rounded-xl border-gray-400 border-4'>
