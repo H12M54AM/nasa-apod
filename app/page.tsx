@@ -1,50 +1,107 @@
 import Heart from '@/public/heart-48.png'
 import Image from 'next/image'
+/**
+ * 
+ * @returns The main page fo picture, body and styling
+ */
 
+type APOD = {
+  id: number,
+  title: string,
+  url: string,
+  hurl: string,
+  date: string,
+  media_type: string,
+  explanation: string,
+  copyright: string
+}
 export default async function Home() {
   const response = await fetch(
     `https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}`,
     { headers: { accept: 'application/json' } }
   );
-  const data = await response.json()
+  const data:APOD = await response.json()
 
   return (
     <main className="">
       <section className=' w-4/5 m-auto mt-10 rounded-xl border-gray-400 border-4'>
-        {/* Outline around the card and header */}
+        {/* Outline around the card and header ^^^ */}
 
         <h1 className='text-center text-white font-semibold text-3xl my-5'>
           Latest News
         </h1>
         {data ? (
-          <div key={data.id} className="flex flex-col w-3/4 m-auto rounded-2xl card " >
+          /**
+           * This section return both visual and 
+           * theoretical/conceptual content. 
+           * 
+           * Visual being a photo in either HD 
+           * or regular.
+           * 
+           * Theoretical/Conceptual being the 
+           * words or facts about the visual 
+           * we see. 
+           */
+          <div key={data?.id} className="flex flex-col w-3/4 m-auto rounded-2xl card " >
             {/* Card */}
-            <figure>
-              {/* Picture */}
-              <Image src={data.url} alt={data.title} width={900} height={750} />
-            </figure>
+            {data?.media_type === "video" ? (
+              /**
+               * This if-check will switch between
+               * video if the fetched data just so
+               * happens to be a video. Otherwise 
+               * it'll be a picture. 
+               */
+              <iframe
+                src={data?.url}
+                title={data?.title}
+                width='560'
+                height='349'
+                frameBorder='0'
+                allowFullScreen
+              />
+            ) : (
+              <div>
+                {/* Downloadable Picture */}
+                <a href={data?.hurl}>
+                  <Image
+                    src={data?.url}
+                    alt={data?.title}
+                    width={900}
+                    height={750}
+                    priority={true}
+                    quality={100}
+                  />
+                </a>
+              </div>
+            )}
+            {/* 
+            The code below contains the content needed for each release
+            , then  it will change and stay the same unlike the code above 
+            which switches between a video or picture.
+            */}
             <div className="flex flex-col justify-start card-body">
               {/* Content of the Post */}
               <h2 className="text-2xl text-white card-title text-left">
-                {data.title}
+                {data?.title}
               </h2>
               <h3 className='font-thin italic'>
-                {data.copyright}
+                {data?.copyright}
               </h3>
               {/* <img src={Heart} alt="heart" className='relative ml-4' /> */}
               <div className='flex flex-col'>
                 {/* Content excludng the Title */}
-                {data.explanation}
+                {data?.explanation}
                 <br></br>
                 <br></br>
                 <div className='badge badge-outline m-auto'>
-                  {data.date}
+                  {data?.date}
                 </div>
 
               </div>
             </div>
           </div>
         ) : (
+          // Will display in the event of no data from the api is being returned
           <h1>Loading...</h1>
         )}
       </section>
