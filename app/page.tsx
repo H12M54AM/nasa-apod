@@ -1,9 +1,4 @@
-import Heart from '@/public/heart-48.png'
 import Image from 'next/image'
-/**
- * 
- * @returns The main page fo picture, body and styling
- */
 
 type APOD = {
   id: number,
@@ -15,13 +10,27 @@ type APOD = {
   explanation: string,
   copyright: string
 }
-export default async function Home() {
-  const response = await fetch(
-    `https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}`,
-    { headers: { accept: 'application/json' } }
-  );
-  const data:APOD = await response.json()
+/**
+ * 
+ * @returns NASA api data
+ */
+async function getData() {
+  let res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}`, {
+    method: "GET"
+  });
+  // Forces json into types
+  const data:APOD = await res.json()
 
+  console.log(data)
+  return data
+}
+/**
+ * 
+ * @returns The main page fo picture, body and styling
+ */
+export default async function Home() {
+  // Contatins all of the Nasa API data
+  const data:APOD = await getData()
   return (
     <main className="">
       <section className=' w-4/5 m-auto mt-10 rounded-xl border-gray-400 border-4'>
