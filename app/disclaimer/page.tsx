@@ -1,13 +1,15 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "APOD Project - Disclaimer",
-    description: "A place where you can view the Astronomy Picture of the Day",
-    authors:
-        [{
-            name: "Edward Naidoo"
-        }],
-    keywords: "Space, Astronomy, Picture"
+    title: "APOD Redesign - Disclaimer",
+    description: "Delve into the legalities and disclosures of our space-themed website featuring NASA's APOD API. Understand our commitment to accuracy, data usage policies, and terms of service. Navigate through our disclaimer to ensure transparency and compliance in your cosmic exploration journey.",
+    keywords: "Website legalities, data usage policies, terms of service, transparency commitment, compliance guidelines.",
+    openGraph: {
+        title: "APOD Redesign - Disclaimer",
+        description: "Delve into the legalities and disclosures of our space-themed website featuring NASA's APOD API. Understand our commitment to accuracy, data usage policies, and terms of service. Navigate through our disclaimer to ensure transparency and compliance in your cosmic exploration journey.",
+        url: "https://apod.edwardcreates.ca/disclaimer",
+        type: "website"
+    }
 };
 
 export default function Learnmore() {
@@ -20,7 +22,8 @@ export default function Learnmore() {
                 solving ideas related to NASA&apos;s Astronomy Picture of 
                 the Day in space. I want to clarify that there is no
                 plagiarism involved in this project. All credits
-                for the original content go to NASA.
+                for the original idea of APOD go to NASA. Except the overall 
+                design.
 
                 This project is inspired by the incredible work done
                 by NASA in exploring and sharing the wonders of space

@@ -1,4 +1,18 @@
+import { Metadata } from "next"
 import Link from "next/link"
+
+
+export const metadata: Metadata = {
+    title: "APOD Redesign - About",
+    description: "Discover the story behind our space-centric platform leveraging NASA's APOD API. Learn how we bring the marvels of space to your screen, blending design excellence with astronomical insights. Dive into our mission to enhance user experience and showcase the beauty of the cosmos.",
+    keywords: "Space website background, NASA APOD API integration, design excellence, astronomical insights, user experience enhancement.",
+    openGraph: {
+        title: "APOD Redesign - About",
+        description: "Discover the story behind our space-centric platform leveraging NASA's APOD API. Learn how we bring the marvels of space to your screen, blending design excellence with astronomical insights. Dive into our mission to enhance user experience and showcase the beauty of the cosmos.",
+        url: "https://apod.edwardcreates.ca/about",
+        type: "website"
+    }
+}
 
 type DEV = {
     type_of: string,

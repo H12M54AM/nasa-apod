@@ -17,7 +17,7 @@ export default function Footer() {
                 </div>
             </nav> */}
             <aside>
-                <p>Copyright © 2024 - All right reserved by Edward Naidoo</p>
+                <p>Copyright © 2024 - All rights reserved by Edward Naidoo</p>
             </aside>
         </footer>
     )
